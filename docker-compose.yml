@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  # Build the client image from the Dockerfile in the client directory
+  client1:
+    build: ./client
+    image: wss-client
+    environment:
+      - API_KEY=${API_KEY_CLIENT1}
+      - SERVER_URL=${SERVER_URL}
+
+  # Use the same image for client2, client3, client4, and client5, but with different API keys
+  client2:
+    image: wss-client
+    environment:
+      - API_KEY=${API_KEY_CLIENT2}
+      - SERVER_URL=${SERVER_URL}
+
+  client3:
+    image: wss-client
+    environment:
+      - API_KEY=${API_KEY_CLIENT3}
+      - SERVER_URL=${SERVER_URL}
+
+  client4:
+    image: wss-client
+    environment:
+      - API_KEY=${API_KEY_CLIENT4}
+      - SERVER_URL=${SERVER_URL}
+
+  client5:
+    image: wss-client
+    environment:
+      - API_KEY=${API_KEY_CLIENT5}
+      - SERVER_URL=${SERVER_URL}
