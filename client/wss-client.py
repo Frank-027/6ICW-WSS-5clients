@@ -3,8 +3,8 @@ import websockets
 import ssl
 import os
 
-API_KEY = os.getenv("API_KEY", "B3X8Z1")  # Default API key if not set in environment
-URL = os.getenv("SERVER_URL", "wss://192.168.0.35/ws")  # Default server URL if not set in environment
+API_KEY = os.getenv("API_KEY", "C9D2P5")  # Default API key if not set in environment
+URL = os.getenv("SERVER_URL", "wss://192.168.0.35:8443/ws")  # Default server URL if not set in environment
 
 ssl_context = ssl.create_default_context()
 ssl_context.load_verify_locations("cert.pem")
@@ -14,6 +14,7 @@ async def client():
     try:
         async with websockets.connect( URL, ssl=ssl_context ) as ws:
             print("Verbonden met de server.")
+            print("Verzenden van API sleutel voor autorisatie...")
 
             #authorization
             await ws.send(API_KEY)
